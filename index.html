@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>office time status managenent JAVASCRIPT</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        height: 100vh;
+        font-size: 20px;
+        background: gray;
+        color: #fff;
+        font-weight: 400;
+      }
+      .offline,
+      .online {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        display: none;
+      }
+      .div-block-121,
+      .div-block-118 {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .div-block-118 {
+        background: #07ff07;
+      }
+      .div-block-121 {
+        background: red;
+      }
+      .active {
+        display: flex !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="online">
+      <div class="div-block-118"></div>
+      <p class="paragraph-126527">We're Online</p>
+    </div>
+    <div class="offline">
+      <div class="div-block-121"></div>
+      <p class="paragraph-126527">We're Offline</p>
+    </div>
+    <!-- onlie ofline status  -->
+    <script>
+      var greenLight = document.querySelector(".online");
+      var redLight = document.querySelector(".offline");
+
+      var date = new Date();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var year = date.getFullYear();
+      var todayHour = date.getHours();
+      var todayMiniute = date.getMinutes();
+      var newdate = `${month}/${day}/${year}`;
+      var dateStr = newdate;
+      var days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      var d = new Date(dateStr);
+      var dayName = days[d.getDay()];
+      if (dayName == "Friday") {
+        redLight.classList.add("active");
+      } else {
+        if (todayHour >= 9 && todayHour <= 18) {
+          greenLight.classList.add("active");
+        } else {
+          redLight.classList.add("active");
+        }
+      }
+    </script>
+  </body>
+</html>
